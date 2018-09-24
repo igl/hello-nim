@@ -1,0 +1,49 @@
+# ignore packages/caches
+nimcache/
+node_modules/
+PSD/
+hot/
+dist/
+build/
+release/
+temp/
+tmp/
+.next/
+.vagrant
+
+# test report
+test-report.xml
+lint-report.xml
+
+# relay
+**/__generated__/*
+
+# numerous always-ignore extensions
+*~
+*.diff
+*.patch
+*.err
+*.orig
+*.log
+*.bak
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
+*.tar
+*.tgz
+*.gz
+
+# os or editor files and folders
+Thumbs.db
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+*.iml
+*.log
+*.tmproj
+*.idea
+*.sln
