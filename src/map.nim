@@ -1,18 +1,20 @@
 import strformat, random
-import types
 
 # Call randomize from the 'math' module to ensure the seed is unique
 randomize()
 
-proc generateNoise* (options:MapOptions) : MapData =
+type Field* = tuple
+    x: int
+    y: int
+    z: int
 
-    var map : MapData =
-        (x: @[0], y: @[0], z: @[0.0])
+func generateHeigthMap* (width:int, height:int, maxDepth:int) : seq[Field] =
+    var fields : seq[Field] =
+        @[]
 
-    # Output a 20x10 grid of noise
-    for y in 0..10:
-        for x in 0..10:
-            #echo &"{y}:{x}"
-            echo rand(float(10))
+    for x in 0..width:
+        for y in 0..height:
+            let z = rand(maxDepth)
+            add(fields, (x : x, y : y, z : z))
 
-    return map
+    return fields

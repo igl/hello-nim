@@ -1,20 +1,20 @@
-import strformat
-import types, map
-
-# Single-line comments start with a #
-echo "Creating things..."
+from strformat import fmt
+from map import generateHeigthMap, Field
+from options import parseArgv, Options
 
 const
-    name : string =
-        "test_map"
+    name     : string = "test_map"
+    width    : int = 4
+    height   : int = 4
+    maxDepth : int = 4
 
-    size : MapOptions = (
-        width: int(256),
-        height: int(256),
-        depth: float(256)
-    )
+let opts : Options = parseArgv()
 
+echo fmt"Creating '{name}' ({opts})"
+echo "..."
 
-echo fmt"Creating '{name}' with w: {size.width} h:{size.height}"
+var canvas : seq[Field] =
+    generateHeigthMap(width, height, maxDepth)
 
-const canvas : MapData = generateNoise(size)
+for f in canvas:
+    echo fmt"x:{f.x} y:{f.y} z:{f.z} "

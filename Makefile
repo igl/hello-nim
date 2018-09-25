@@ -1,5 +1,6 @@
 # Vars
 TARGETS = dist/main
+ARGV = -x 4 -y 4 -z 4 --debug
 
 # Tasks
 .PHONY: all prepare main mainjs test testjs clean
@@ -11,12 +12,12 @@ prepare:
 
 main: dist/main
 	@echo "\n"
-	./dist/main
+	./dist/main $(ARGV)
 	@echo "\n"
 
 mainjs: dist/main.js
 	@echo "\n"
-	node ./dist/main.js
+	node ./dist/main.js $(ARGV)
 	@echo "\n"
 
 test: dist/test
