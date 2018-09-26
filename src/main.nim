@@ -17,4 +17,4 @@ var canvas : seq[Field] =
     generateHeigthMap(width, height, maxDepth)
 
 for f in canvas:
-    echo fmt"x:{f.x} y:{f.y} z:{f.z} "
+    echo fmt"x:{f.x} y:{f.y} z:{f.z}"

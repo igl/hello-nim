@@ -1,6 +1,7 @@
 # Vars
-TARGETS = dist/main
-ARGV = -x 4 -y 4 -z 4 --debug
+TARGETS  = dist/main
+C_ARGS   = --app:console --deadCodeElim:on --opt:size
+APP_ARGS = -x 4 -y 4 -z 4 --debug
 
 # Tasks
 .PHONY: all prepare main mainjs test testjs clean
@@ -11,31 +12,23 @@ prepare:
 	@mkdir -p dist
 
 main: dist/main
-	@echo "\n"
-	./dist/main $(ARGV)
-	@echo "\n"
+	./dist/main $(APP_ARGS)
 
 mainjs: dist/main.js
-	@echo "\n"
-	node ./dist/main.js $(ARGV)
-	@echo "\n"
+	node ./dist/main $(APP_ARGS)
 
 test: dist/test
-	@echo "\n"
 	./dist/test
-	@echo "\n"
 
 testjs: dist/test.js
-	@echo "\n"
-	node ./dist/test.js
-	@echo "\n"
+	node ./dist/test
 
 clean:
 	@rm -rf dist
 
 # Rules
 dist/%.js: src/%.nim
-	nim --app:console --out:$@ js $<
+	nim $(C_ARGS) --out:$@ js $<
 
 dist/%: src/%.nim
-	nim --app:console --out:$@ c $<
+	nim $(C_ARGS) --out:$@ c $<

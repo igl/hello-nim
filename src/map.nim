@@ -1,6 +1,5 @@
 import strformat, random
 
-# Call randomize from the 'math' module to ensure the seed is unique
 randomize()
 
 type Field* = tuple
@@ -9,12 +8,9 @@ type Field* = tuple
     z: int
 
 func generateHeigthMap* (width:int, height:int, maxDepth:int) : seq[Field] =
-    var fields : seq[Field] =
-        @[]
+    result = @[]
 
     for x in 0..width:
         for y in 0..height:
             let z = rand(maxDepth)
-            add(fields, (x : x, y : y, z : z))
-
-    return fields
+            add(result, (x : x, y : y, z : z))

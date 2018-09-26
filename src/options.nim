@@ -2,9 +2,7 @@ from re import match, re
 from strformat import fmt
 from os import paramStr, paramCount
 
-
 let reFloat = re"\b[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?\b"
-
 
 func getArgType(str : string) : tuple[key: string, val: string] =
     if substr(str, 0,1) == "--":
